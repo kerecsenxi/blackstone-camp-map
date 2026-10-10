@@ -9,19 +9,21 @@
 <title>黑石营地 · 声光艺术营地地图</title>
 <meta name="description" content="一片面向山水的开阔草坡：声光主空间、镜面激光装置、双石碑入口与帐篷营地。点开即可进入三维交互地图，自由探索。">
 
-<!-- 微信 / 社交分享卡片 -->
+<!-- 微信 / 社交分享卡片（og:image 必须是绝对地址，微信抓取时不执行 JS） -->
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://blackstone-camp.pages.dev/">
 <meta property="og:title" content="黑石营地 · 声光艺术营地地图">
 <meta property="og:description" content="声光艺术 · 视觉共创｜在航拍实景中探索黑石营地">
-<meta property="og:image" content="assets/share-hero.jpg">
+<meta property="og:image" content="https://blackstone-camp.pages.dev/assets/share-hero.jpg">
+<meta property="og:image:secure_url" content="https://blackstone-camp.pages.dev/assets/share-hero.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="1200">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="黑石营地 · 声光艺术营地地图">
 <meta name="twitter:description" content="声光艺术 · 视觉共创｜在航拍实景中探索黑石营地">
-<meta name="twitter:image" content="assets/share-hero.jpg">
+<meta name="twitter:image" content="https://blackstone-camp.pages.dev/assets/share-hero.jpg">
 <meta itemprop="name" content="黑石营地 · 声光艺术营地地图">
-<meta itemprop="image" content="assets/share-hero.jpg">
+<meta itemprop="image" content="https://blackstone-camp.pages.dev/assets/share-hero.jpg">
 
 <link rel="icon" href="assets/logo-96.png">
 <link rel="apple-touch-icon" href="assets/logo-96.png">
@@ -162,13 +164,6 @@
     });
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
   for (var j = 0; j < items.length; j++) io.observe(items[j]);
-
-  // 分享卡片图片补全为绝对地址（域名确定后生效）
-  try {
-    var abs = new URL('assets/share-hero.jpg', location.href).href;
-    document.querySelectorAll('meta[property="og:image"],meta[name="twitter:image"],meta[itemprop="image"]')
-      .forEach(function (m) { m.setAttribute('content', abs); });
-  } catch (err) {}
 })();
 </script>
 </body>
