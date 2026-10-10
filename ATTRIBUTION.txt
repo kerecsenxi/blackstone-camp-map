@@ -1,0 +1,22 @@
+黑石营地交互地图 · 素材来源
+
+Three.js
+版本：0.180.0（r180），固定本地依赖。
+来源：Three.js 官方 npm 发布包 https://registry.npmjs.org/three/-/three-0.180.0.tgz
+官方项目：https://threejs.org/  https://github.com/mrdoob/three.js
+复制文件：build/three.module.js、build/three.core.js、examples/jsm/controls/OrbitControls.js。
+许可：MIT，完整许可保存在 vendor/LICENSE-three.txt。
+
+用户提供的摄影图片与品牌标识
+assets/aerial-top.png：20261009153148-22572380-3ff7ecf0.png，用户提供的场地俯拍原图。
+assets/aerial-oblique.png：20261009162343-8ecac529-f924d6b4.png，用户提供的场地斜视原图。
+assets/logo.png：微信图片_20260930010115_179_2957.png，用户提供的营地 Logo。
+以上素材仅按用户请求用于本营地项目；本文件不改变原素材的权利归属。
+
+营地标识效果参考图
+assets/camp-top-review.png：黑石营地_俯拍_Logo双碑_R2.png。
+assets/camp-oblique-review.png：黑石营地_斜视_Logo双碑_R2.png。
+来源：本项目此前根据用户航拍与 Logo 制作的 R2 编辑图，保存在 output/黑石营地_航拍标识_20261010/R2/。
+参考图用于方案展示，营地尺寸与设施位置应以现场确认资料为准。
+
+以上图片按原文件复制，未在资产准备过程中进行编辑、裁切或重编码。
