@@ -1,109 +1,175 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#101210">
-  <meta name="description" content="在航拍实景中探索黑石营地：声光主空间、镜面装置、双石碑入口、帐篷区与营地市集。">
-  <title>黑石营地 · 交互地图</title>
-  <link rel="icon" href="assets/logo.png">
-  <link rel="stylesheet" href="styles.css">
-  <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101310">
+<meta name="format-detection" content="telephone=no">
+
+<title>黑石营地 · 声光艺术营地地图</title>
+<meta name="description" content="一片面向山水的开阔草坡：声光主空间、镜面激光装置、双石碑入口与帐篷营地。点开即可进入三维交互地图，自由探索。">
+
+<!-- 微信 / 社交分享卡片 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="黑石营地 · 声光艺术营地地图">
+<meta property="og:description" content="声光艺术 · 视觉共创｜在航拍实景中探索黑石营地">
+<meta property="og:image" content="assets/share-hero.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1200">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="黑石营地 · 声光艺术营地地图">
+<meta name="twitter:description" content="声光艺术 · 视觉共创｜在航拍实景中探索黑石营地">
+<meta name="twitter:image" content="assets/share-hero.jpg">
+<meta itemprop="name" content="黑石营地 · 声光艺术营地地图">
+<meta itemprop="image" content="assets/share-hero.jpg">
+
+<link rel="icon" href="assets/logo-96.png">
+<link rel="apple-touch-icon" href="assets/logo-96.png">
+<link rel="stylesheet" href="share.css">
 </head>
 <body>
-  <svg class="icon-library" aria-hidden="true"><defs>
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
-    <symbol id="i-map" viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2Zm6-2v16m6-14v16"/></symbol>
-    <symbol id="i-focus" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m8 0h5v-5"/><circle cx="12" cy="12" r="4"/></symbol>
-    <symbol id="i-photo" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m3 17 5-5 4 4 4-6 5 7"/><circle cx="8" cy="8" r="1"/></symbol>
-    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2M4 20l2-2M18 6l2-2"/></symbol>
-    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 14A9 9 0 0 1 10 3.5 9 9 0 1 0 20.5 14Z"/></symbol>
-    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m3 8 9-5 9 5-9 5ZM3 12l9 5 9-5M3 16l9 5 9-5"/></symbol>
-    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></symbol>
-  </defs></svg>
-  <main class="map-shell">
-    <div id="map" aria-label="黑石营地三维交互地图"></div>
-    <div id="fallback-map" hidden><img src="assets/aerial-top.png" alt="营地俯拍航拍图"></div>
-    <div class="map-shade" aria-hidden="true"></div>
-    <div id="hotspots" class="hotspots" aria-label="地图设施标记"></div>
-    <section id="photo-mode" hidden aria-label="营地实景航拍">
-      <img id="photo-image" src="assets/aerial-oblique.png" alt="场地斜视航拍照片">
-      <div class="photo-switch"><span>实景航拍</span><button id="photo-top" type="button" aria-pressed="false">俯拍</button><button id="photo-oblique" type="button" aria-pressed="true">斜视</button></div>
-    </section>
 
-    <header class="brand-header glass">
-      <img class="brand-logo" src="assets/logo.png" alt="黑石营地标识">
-      <div><span class="eyebrow">BLACK STONE · CAMP MAP</span><h1>黑石营地</h1><p>声光艺术 · 视觉共创</p></div>
-      <span class="brand-index">01</span>
-    </header>
+<div class="page">
 
-    <div class="top-actions">
-      <button id="night-toggle" class="glass action" type="button" aria-pressed="false"><svg><use href="#i-sun"/></svg><span id="night-label">昼景</span></button>
-      <button id="layers-toggle" class="glass action" type="button" aria-expanded="false" aria-controls="layers-panel"><svg><use href="#i-layers"/></svg><span>图层</span></button>
-      <button id="nav-open" class="nav-action action" type="button"><svg><use href="#i-pin"/></svg><span>如何抵达</span></button>
+  <!-- 主视觉 -->
+  <header class="hero">
+    <img class="hero-img" src="assets/share-hero.jpg" alt="黑石营地航拍实景：草坡、红圈声光主空间与帐篷区">
+    <div class="hero-veil" aria-hidden="true"></div>
+    <div class="hero-glow" aria-hidden="true"></div>
+
+    <div class="brand">
+      <img src="assets/logo-96.png" alt="黑石营地标识" width="46" height="46">
+      <div class="brand-text">
+        <span class="eyebrow">BLACK STONE · CAMP MAP</span>
+        <strong>黑石营地</strong>
+      </div>
     </div>
-    <section id="layers-panel" class="glass layers-panel" hidden aria-label="地图图层">
-      <div class="panel-heading"><span>显示内容</span><span class="eyebrow">LAYERS</span></div>
-      <label><span>帐篷区</span><input type="checkbox" data-layer="tents" checked></label>
-      <label><span>餐车</span><input type="checkbox" data-layer="food" checked></label>
-      <label><span>镜面装置</span><input type="checkbox" data-layer="mirrors" checked></label>
-      <label><span>市集摊位</span><input type="checkbox" data-layer="stalls" checked></label>
-      <label><span>入场指引</span><input type="checkbox" data-layer="route"></label>
-      <label><span>位置标签</span><input type="checkbox" data-layer="labels" checked></label>
+
+    <div class="hero-copy">
+      <span class="eyebrow reveal">SHAOXING · KEQIAO 29.7792°N 120.6580°E</span>
+      <h1 class="reveal">黑石营地</h1>
+      <p class="sub reveal">声光艺术 · 视觉共创</p>
+      <p class="lede reveal">一片面向山水的开阔草坡。<br>声光主空间、镜面激光、双石碑与帐篷营地，在这里同时展开。</p>
+
+      <a class="cta reveal" href="map.html">
+        <span>进入交互地图</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <p class="cta-hint reveal">手机：单指平移 · 双指缩放旋转</p>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true"><span></span></div>
+  </header>
+
+  <!-- 营地亮点 -->
+  <main>
+    <section class="section">
+      <span class="eyebrow">WHAT YOU WILL SEE</span>
+      <h2>营地有什么</h2>
+      <p class="section-note">五处主要设施，点击地图里的任意一处都可以靠近查看。</p>
+
+      <ul class="cards">
+        <li class="card reveal">
+          <span class="card-no">01</span>
+          <h3>声光主空间</h3>
+          <p>8×8m、高 4m 的脚手架立方体。夜景中屋顶中央一条红色激光向上延伸，是整片草坡的视觉锚点。</p>
+        </li>
+        <li class="card reveal">
+          <span class="card-no">02</span>
+          <h3>镜面激光装置</h3>
+          <p>主空间侧后方四块 1.8m 高的薄片镜面交错摆放，红光在镜面之间穿行、折返。</p>
+        </li>
+        <li class="card reveal">
+          <span class="card-no">03</span>
+          <h3>双石碑入口</h3>
+          <p>两座 2.5m 高的石碑，标记着从停车场方向进入营地的入口。</p>
+        </li>
+        <li class="card reveal">
+          <span class="card-no">04</span>
+          <h3>帐篷营地</h3>
+          <p>约十顶帐篷集中在主空间一侧，沿草坡铺开，白天是休息区，夜里亮起暖光。</p>
+        </li>
+        <li class="card reveal">
+          <span class="card-no">05</span>
+          <h3>营地市集</h3>
+          <p>餐车旁预留海娜纹身与嬉皮服饰两个摊位，入口与主空间另一侧留出通行空间。</p>
+        </li>
+      </ul>
     </section>
 
-    <aside class="explore-panel glass" aria-label="探索营地">
-      <div class="panel-heading"><span>探索营地</span><span class="eyebrow">EXPLORE</span></div>
-      <button type="button" data-poi="camp" class="poi-row active"><span class="poi-no">01</span><span>声光主空间<small>身体动作成为画面</small></span><svg><use href="#i-arrow"/></svg></button>
-      <button type="button" data-poi="entrance" class="poi-row"><span class="poi-no">02</span><span>双石碑入口<small>从停车场一侧进入</small></span><svg><use href="#i-arrow"/></svg></button>
-      <button type="button" data-poi="mirrors" class="poi-row"><span class="poi-no">03</span><span>镜面装置<small>四块镜面 · 高1.8米</small></span><svg><use href="#i-arrow"/></svg></button>
-      <button type="button" data-poi="tents" class="poi-row"><span class="poi-no">04</span><span>帐篷区<small>约10顶，集中一侧</small></span><svg><use href="#i-arrow"/></svg></button>
-      <button type="button" data-poi="food" class="poi-row"><span class="poi-no">05</span><span>餐车<small>休息与补给</small></span><svg><use href="#i-arrow"/></svg></button>
-      <button type="button" data-poi="henna" class="poi-row"><span class="poi-no">06</span><span>海娜纹身<small>餐车旁预留摊位</small></span><svg><use href="#i-arrow"/></svg></button>
-      <button type="button" data-poi="clothes" class="poi-row"><span class="poi-no">07</span><span>嬉皮服饰<small>餐车旁预留摊位</small></span><svg><use href="#i-arrow"/></svg></button>
-      <button type="button" data-poi="parking" class="poi-row"><span class="poi-no">08</span><span>停车场<small>你的抵达起点</small></span><svg><use href="#i-arrow"/></svg></button>
-      <div class="explore-footer"><span class="red-dot"></span> 营地范围示意 <span class="coordinate">29.779216°N</span></div>
-    </aside>
+    <!-- 抵达 -->
+    <section class="section arrival">
+      <span class="eyebrow">HOW TO ARRIVE</span>
+      <h2>如何抵达</h2>
+      <p class="section-note">先抵达场地停车场，沿场地道路进入，再前往双石碑标记的营地入口。</p>
 
-    <section id="info-panel" class="info-panel glass" aria-live="polite">
-      <button id="info-toggle" type="button" class="info-toggle" aria-expanded="true" aria-controls="info-body"><span><span class="info-kicker" id="panel-kicker">01 / SOUND & LIGHT</span><strong id="panel-compact-title">声光主空间 · 查看介绍</strong></span><span class="chevron">⌃</span></button>
-      <div id="info-body">
-        <h2 id="panel-title">声光主空间</h2>
-        <p id="panel-description">黑色围护的声光空间，让身体动作成为画面。在这里观看、聚集与共创。</p>
-        <div id="panel-tags" class="tags"><span>声光交互</span><span>视觉共创</span></div>
-        <button id="camp-photo-open" type="button" class="review-image"><img src="assets/camp-oblique-review.png" alt="黑石营地主空间参考效果"><span>主空间参考效果 <svg><use href="#i-arrow"/></svg></span></button>
-        <div class="info-note" id="panel-note">营地布局为方案示意，设施以现场安排为准。</div>
+      <div class="flow">
+        <span>停车场</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <span>场地入口</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <span>黑石营地</span>
+      </div>
+
+      <div class="coord">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="coord-label">场地坐标</span>
+        <code>29.779216, 120.657959</code>
+      </div>
+
+      <div class="nav-links">
+        <a href="https://j.map.baidu.com/9d/YIIg" target="_blank" rel="noopener noreferrer">百度地图 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=29.779216,120.657959" target="_blank" rel="noopener noreferrer">Google 地图 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <a class="cta cta-ghost" href="map.html">
+        <span>在地图上查看入场指引</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </section>
+
+    <section class="section gallery">
+      <span class="eyebrow">AERIAL VIEW</span>
+      <h2>航拍实景</h2>
+      <div class="shots">
+        <figure><img src="assets/gallery-top.jpg" alt="场地俯拍航拍图" loading="lazy"><figcaption>俯拍 · 场地全貌</figcaption></figure>
+        <figure><img src="assets/gallery-oblique.jpg" alt="场地斜视航拍图" loading="lazy"><figcaption>斜视 · 草坡与水面</figcaption></figure>
       </div>
     </section>
-
-    <nav class="view-dock glass" aria-label="地图视角">
-      <button type="button" data-view="overview" class="active" aria-pressed="true"><svg><use href="#i-map"/></svg><span>全场</span></button>
-      <button type="button" data-view="camp" aria-pressed="false"><svg><use href="#i-focus"/></svg><span>营地</span></button>
-      <button type="button" data-view="top" aria-pressed="false"><svg><use href="#i-map"/></svg><span>俯视</span></button>
-      <button type="button" data-view="photo" aria-pressed="false"><svg><use href="#i-photo"/></svg><span>实景</span></button>
-    </nav>
-    <div class="map-tools glass"><button id="reset-view" type="button" aria-label="返回全场视角"><svg><use href="#i-focus"/></svg></button><span id="compass" title="照片朝向示意">↑<small>全场</small></span></div>
-    <div class="interaction-hint" id="interaction-hint">拖动旋转 · 双指缩放 · 点击位置探索</div>
-    <div class="map-credit">营地方案导览 <span>·</span> 绍兴柯桥</div>
-    <div id="loading" class="loading"><img src="assets/logo.png" alt=""><span>正在进入黑石营地</span><div></div></div>
-    <div id="notice" role="status" hidden></div>
   </main>
 
-  <dialog id="nav-modal" class="modal">
-    <button id="modal-close" type="button" class="modal-close" aria-label="关闭"><svg><use href="#i-close"/></svg></button>
-    <span class="eyebrow">ARRIVAL / 绍兴柯桥</span><h2>从这里抵达营地</h2>
-    <p>先抵达场地停车场，沿场地道路进入，再前往双石碑标记的黑石营地入口。</p>
-    <div class="arrival-flow"><span>停车场</span><svg><use href="#i-arrow"/></svg><span>场地入口</span><svg><use href="#i-arrow"/></svg><span>黑石营地</span></div>
-    <button id="show-route" type="button" class="primary-button">在地图上查看指引 <svg><use href="#i-arrow"/></svg></button>
-    <div class="navigation-links"><a href="https://j.map.baidu.com/9d/YIIg" target="_blank" rel="noopener noreferrer">百度地图 <svg><use href="#i-arrow"/></svg></a><a href="https://www.google.com/maps/search/?api=1&query=29.779216,120.657959" target="_blank" rel="noopener noreferrer">Google 地图 <svg><use href="#i-arrow"/></svg></a></div>
-    <p class="modal-note">场地坐标：29.779216, 120.657959（Google 来源）。入场路线为示意，请结合现场指引。</p>
-  </dialog>
-  <dialog id="review-modal" class="review-modal modal">
-    <button id="review-close" type="button" class="modal-close" aria-label="关闭视觉方案"><svg><use href="#i-close"/></svg></button>
-    <div class="review-tabs"><span>主空间参考效果</span><button type="button" data-review="oblique" class="active">斜视</button><button type="button" data-review="top">俯拍</button></div>
-    <img id="review-image" src="assets/camp-oblique-review.png" alt="黑石营地斜视视觉方案">
-  </dialog>
-  <script type="module" src="app.js"></script>
+  <footer class="foot">
+    <img src="assets/logo-96.png" alt="" width="34" height="34">
+    <p>黑石营地 · 交互地图 R3</p>
+    <p class="foot-note">场地尺度、边界、设施排布与步行路线为方案示意，不作为测绘或施工依据。</p>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('in');
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+  for (var j = 0; j < items.length; j++) io.observe(items[j]);
+
+  // 分享卡片图片补全为绝对地址（域名确定后生效）
+  try {
+    var abs = new URL('assets/share-hero.jpg', location.href).href;
+    document.querySelectorAll('meta[property="og:image"],meta[name="twitter:image"],meta[itemprop="image"]')
+      .forEach(function (m) { m.setAttribute('content', abs); });
+  } catch (err) {}
+})();
+</script>
 </body>
 </html>
